@@ -3,12 +3,8 @@
 #include <SPI.h>
 #include <WebServer_WT32_ETH01.h>
 
-#define DEBUG_ETHERNET_WEBSERVER_PORT Serial
 #define RX_LED 5
 #define TX_LED 17
-
-// Debug Level from 0 to 4
-#define _ETHERNET_WEBSERVER_LOGLEVEL_ 0
 
 
 /**
@@ -20,26 +16,18 @@
 IPAddress myIP( 10, 250, 250, 237 );
 IPAddress myGW( 10, 250, 250, 1 );
 IPAddress mySN( 255, 255, 255, 0 );
-const char *brokerAddress     = "10.250.250.205";
-const unsigned int brokerPort = 1883;
-const char *commandTopic      = "test/wt32eth01/commands";
-const char *publishTopic      = "test/wt32eth01";
-const char *clientId          = "wt32eth01";
+const char *brokerAddress = "10.250.250.205";
 #else
 // Select the IP address according to your home network.
 IPAddress myIP( 192, 168, 55, 211 );
 IPAddress myGW( 192, 168, 55, 1 );
 IPAddress mySN( 255, 255, 255, 0 );
-const char *brokerAddress     = "192.168.55.200";
-const unsigned int brokerPort = 1883;
-const char *commandTopic      = "test/wt32eth01/commands";
-const char *publishTopic      = "test/wt32eth01";
-const char *clientId          = "wt32eth01";
+const char *brokerAddress = "192.168.55.200";
 #endif// WORK
-
-// Google DNS Server IP
-IPAddress myDNS( 8, 8, 8, 8 );
-
+const unsigned int brokerPort        = 1883;
+const char *commandTopic             = "test/wt32eth01/commands";
+const char *publishTopic             = "test/wt32eth01";
+const char *clientId                 = "wt32eth01";
 unsigned long lastMqttConnectionTime = 0;
 unsigned long mqttCoolDownInterval   = 7000;
 unsigned long lastPublishTime        = 0;
@@ -47,6 +35,7 @@ unsigned long publishInterval        = 20000;
 unsigned long publishCount           = 0;
 unsigned long mqttConnectCount       = 0;
 unsigned long callbackCount          = 0;
+IPAddress myDNS( 8, 8, 8, 8 );// Google DNS Server IP
 
 
 EthernetClient ethClient;
@@ -105,7 +94,7 @@ void mqttCallback( char *topic, byte *payload, unsigned int length )
 {
 	callbackCount++;
 	Serial.printf( "\nMessage arrived on Topic: '%s'\n", topic );
-	Serial.printf( "\nMessage arrived on Topic: '%lu'\n", callbackCount );
+	Serial.printf( "Callback count: '%lu'\n", callbackCount );
 }// End of the mqttCallback() function.
 
 
