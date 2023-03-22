@@ -162,11 +162,33 @@ void mqttConnect( const char *broker, const int port )
 				mqttCoolDownInterval = 0;
 			mqttCoolDownInterval += 10000;
 			Serial.printf( "MQTT cooldown interval: %lu\n", mqttCoolDownInterval );
+			toggleLED();
 		}
 
 		lastMqttConnectionTime = millis();
 	}
 }  // End of the mqttConnect() function.
+
+
+/**
+ * @brief toggleLED() will change the state of the LED.
+ * This function does not manage any timings.
+ */
+void toggleLED()
+{
+	if( digitalRead( TX_LED ) != LED_ON )
+	{
+		digitalWrite( RX_LED, LED_OFF );
+		digitalWrite( TX_LED, LED_ON );
+		Serial.println( "LED on" );
+	}
+	else
+	{
+		digitalWrite( RX_LED, LED_ON );
+		digitalWrite( TX_LED, LED_OFF );
+		Serial.println( "LED off" );
+	}
+} // End of toggleLED() function.
 
 
 void loop()
@@ -182,6 +204,7 @@ void loop()
 	{
 		publishCount++;
 		char valueBuffer[25] = "";
+		toggleLED();
 		snprintf( valueBuffer, 25, "%lu", publishCount );
 		Serial.printf( "Publishing '%s' to '%s'\n", valueBuffer, PUBLISH_TOPIC );
 		mqttClient.publish( PUBLISH_TOPIC, valueBuffer );
