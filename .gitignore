@@ -3,6 +3,9 @@
 cmake-build-*/
 *.iml
 privateInfo.*
+debug.cfg
+debug_custom.json
+esp32.svd
 
 # Prerequisites
 *.d
