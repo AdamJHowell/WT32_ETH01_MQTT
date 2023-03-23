@@ -6,7 +6,6 @@
 #define WT32_ETH01_MQTT_ETHERNET_H
 
 
-#include "Ethernet.h"
 #include "PubSubClient.h"
 #include "WT32_ETH01_MQTT.h"
 #include <ETH.h>

@@ -5,6 +5,8 @@
 #ifndef WT32_ETH01_MQTT_WT32_ETH01_MQTT_H
 #define WT32_ETH01_MQTT_WT32_ETH01_MQTT_H
 
+#include "Ethernet.h"
+#include "PubSubClient.h"
 
 const unsigned int RX_LED            = 5;     // The GPIO used by the receive LED.
 const unsigned int TX_LED            = 17;    // The GPIO used by the transmit LED.
