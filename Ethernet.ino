@@ -4,6 +4,8 @@
 
 
 #include "Ethernet.h"
+#include "PubSubClient.h"
+#include "WT32_ETH01_MQTT.h"
 
 
 /**

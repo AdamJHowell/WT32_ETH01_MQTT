@@ -5,8 +5,8 @@ set( CMAKE_CXX_STANDARD 17 )
 
 add_executable( WT32_ETH01_MQTT
 		WT32_ETH01_MQTT.ino
-		Ethernet.cpp
-		Ethernet.h
-		WT32_ETH01_MQTT.h )
+		WT32_ETH01_MQTT.h
+		Ethernet.ino
+		Ethernet.h )
 
 set_target_properties( WT32_ETH01_MQTT PROPERTIES LINKER_LANGUAGE CXX )

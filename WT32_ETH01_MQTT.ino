@@ -1,6 +1,8 @@
 /**
  * This program will use the Ethernet port on a WT32-ETH01 devkit to publish telemetry to a MQTT broker.
  */
+#include "Ethernet.h"
+#include "PubSubClient.h"
 #include "WT32_ETH01_MQTT.h"
 
 
@@ -85,7 +87,7 @@ void printTelemetry()
 
 void loop()
 {
-	if( !mqttClient.connected() )
+	if( eth_connected && !mqttClient.connected() )
 		mqttConnect( BROKER_ADDRESS, BROKER_PORT );
 	else
 		mqttClient.loop();

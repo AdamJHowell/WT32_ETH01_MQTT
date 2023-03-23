@@ -6,7 +6,10 @@
 #define WT32_ETH01_MQTT_ETHERNET_H
 
 
+#include "Ethernet.h"
+#include "PubSubClient.h"
 #include "WT32_ETH01_MQTT.h"
+#include <ETH.h>
 
 
 WiFiClient ethClient;
@@ -38,7 +41,7 @@ uint8_t linkSpeed                     = 42;                                     
 void NetworkEvent( WiFiEvent_t event );
 void mqttCallback( char *topic, byte *payload, unsigned int length );
 void lookupMQTTCode( int code, char *buffer );
-void mqttConnect( const char *broker, const int port );
+void mqttConnect( const char *broker, int port );
 
 
 #endif  //WT32_ETH01_MQTT_ETHERNET_H
