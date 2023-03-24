@@ -1,5 +1,5 @@
 /**
- * This program will use the Ethernet port on a WT32-ETH01 devkit to publish telemetry to a MQTT broker.
+ * This program will use the Ethernet port on a WT32-ETH01 devkit to publish DS18B20 temperature data to a MQTT broker.
  */
 #include "WT32_ETH01_MQTT.h"
 

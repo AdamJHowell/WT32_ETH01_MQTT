@@ -16,7 +16,7 @@ PubSubClient mqttClient( ethClient );
 
 
 const unsigned int BROKER_PORT        = 1883;                                   // The port to use when connecting to the MQTT broker.
-const char *BROKER_ADDRESS            = "192.168.55.200";                       // The network address of the MQTT broker.  This can be an IP address or a hostname.
+const char *BROKER_ADDRESS            = "theocho.local";                        // The network address of the MQTT broker.  This can be an IP address or a hostname.
 const char *COMMAND_TOPIC             = "test/wt32eth01/commands";              // The MQTT topic where the IP address will be published to.
 const char *PUBLISH_TOPIC             = "test/wt32eth01/publishCount";          // The MQTT topic where the publish count will be published to.
 const char *CALLBACK_COUNT_TOPIC      = "test/wt32eth01/networkCallbackCount";  // The MQTT topic where the network callback count will be published to.
