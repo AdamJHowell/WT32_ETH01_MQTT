@@ -31,7 +31,7 @@ void NetworkEvent( WiFiEvent_t event )
 			else
 				snprintf( duplex, 12, "%s", "HALF_DUPLEX" );
 			linkSpeed = ETH.linkSpeed();
-			Serial.printf( "ETH MAC: %s, IPv4: %s, %s, %u Mbps", macAddress, ipAddress, duplex, linkSpeed );
+			Serial.printf( "ETH MAC: %s, IPv4: %s, %s, %u Mbps\n", macAddress, ipAddress, duplex, linkSpeed );
 			eth_connected = true;
 			break;
 		case ARDUINO_EVENT_ETH_DISCONNECTED:
