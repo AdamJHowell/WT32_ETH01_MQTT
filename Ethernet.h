@@ -9,6 +9,8 @@
 #include "PubSubClient.h"
 #include "WT32_ETH01_MQTT.h"
 #include <ETH.h>
+#include <array>
+#include "Arduino.h"
 
 
 WiFiClient ethClient;
@@ -16,10 +18,10 @@ PubSubClient mqttClient( ethClient );
 
 
 const unsigned int BROKER_PORT        = 1883;                                        // The port to use when connecting to the MQTT broker.
-// const char *BROKER_ADDRESS            = "adamh-dt-2019";                             // The network address of the MQTT broker.  This can be an IP address or a hostname.
-const char *BROKER_ADDRESS            = "walterfcpi4";                               // The network address of the MQTT broker.  This can be an IP address or a hostname.
+const char *BROKER_ADDRESS            = "adamh-dt-2019";                             // The network address of the MQTT broker.  This can be an IP address or a hostname.
+//const char *BROKER_ADDRESS            = "walterfcpi4";                               // The network address of the MQTT broker.  This can be an IP address or a hostname.
 const char *COMMAND_TOPIC             = "AdamsDesk/wt32eth01/commands";              // The MQTT topic where the IP address will be published to.
-const char *PUBLISH_TOPIC             = "AdamsDesk/wt32eth01/publishCount";          // The MQTT topic where the publish count will be published to.
+const char *PUBLISH_TOPIC             = "AdamsDesk/wt32eth01/publishCount";          // The MQTT topic where the publishCount will be published to.
 const char *CALLBACK_COUNT_TOPIC      = "AdamsDesk/wt32eth01/networkCallbackCount";  // The MQTT topic where the network callback count will be published to.
 const char *MQTT_CALLBACK_COUNT_TOPIC = "AdamsDesk/wt32eth01/mqttCallbackCount";     // The MQTT topic where the MQTT callback count will be published to.
 const char *MAC_TOPIC                 = "AdamsDesk/wt32eth01/mac";                   // The MQTT topic where the MAC address will be published to.
@@ -32,10 +34,11 @@ unsigned long mqttConnectCount        = 0;                                      
 unsigned long mqttCallbackCount       = 0;                                           // A count of how many times the MQTT callback function has been called.
 unsigned long networkCallbackCount    = 0;                                           // A count of how many times the network callback function has been called.
 char macAddress[18]                   = "AA:BB:CC:00:11:22";                         // A character array to hold the MAC address and a null terminator.
-char ipAddress[16]                    = "127.0.0.1";                                 // A character array to hold the IP address and a null terminator.
+//char ipAddress[16]                    = "127.0.0.1";                                 // A character array to hold the IP address and a null terminator.
+std::array<char, 16>  ipAddress;
 char duplex[12]                       = "HALF_DUPLEX";                               // A character array to hold the link duplex state and a null terminator.
 bool eth_connected                    = false;                                       // A flag to indicate the connection state.
-uint8_t linkSpeed                     = 42;                                          // This default value helps identify when the real value has not been assigned yet.
+unsigned char linkSpeed               = 42;                                          // uint8_t This default value helps identify when the real value has not been assigned yet.
 
 
 void NetworkEvent( WiFiEvent_t event );
